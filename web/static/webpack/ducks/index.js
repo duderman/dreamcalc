@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux-immutable'
 import { call, spawn } from 'redux-saga/effects'
 import login, { sagas as loginSagas } from 'ducks/login'
+import game from 'ducks/game'
 
 const reducers = {
-  login
+  login,
+  game
 }
 
 export default combineReducers(reducers)
