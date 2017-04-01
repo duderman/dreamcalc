@@ -3,21 +3,23 @@ import { call, put } from 'redux-saga/effects'
 import { Map } from 'immutable'
 import Api from 'api'
 
-const initialState = Map({})
+const initialState = Map({ email: '', valid: true, checking: false })
 
 export default function reducer (currentState = initialState, action) {
   switch (action.type) {
     case LOGIN_SUCCESS:
-      return currentState.set({ email: action.email, error: '' })
+      return currentState.merge({ email: action.email, valid: true, checking: false })
     case LOGIN_FAILED:
-      return currentState.set({ error: action.error })
+      return currentState.merge({ valid: false, checking: false })
+    case LOGIN_REQUESTED:
+      return currentState.merge({ valid: false, checking: true })
     default:
       return currentState
   }
 }
 
 const logined = (email) => ({ type: LOGIN_SUCCESS, email })
-const loginError = (error) => ({ type: LOGIN_FAILED, error })
+const loginError = () => ({ type: LOGIN_FAILED })
 
 export const requestLogin = (email) => ({ type: LOGIN_REQUESTED, email })
 
@@ -26,12 +28,13 @@ function* loginAsyncWatcher () {
 }
 
 export function* loginAsyncWorker (action) {
-  const email = action.payload.email
+  const email = action.email
   try {
     yield call(Api.checkEmail, email)
     yield put(logined(email))
   } catch (e) {
-    yield put(loginError(e))
+    console.error(e)
+    yield put(loginError())
   }
 }
 

@@ -65,10 +65,17 @@
     "eslint-plugin-standard": "^2.0.0",
     "extract-text-webpack-plugin": "^2.0.0-beta",
     "imagemin-webpack-plugin": "^1.2.1",
-    "immutable": "^3.8.1",
     "jest": "^17.0.3",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.1.0-beta.27",
+    "webpack-dev-server": "^2.1.0-beta.10"
+  },
+  "dependencies": {
+    "phoenix": "file:deps/phoenix",
+    "phoenix_html": "file:deps/phoenix_html",
+    "immutable": "^3.8.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-json-tree": "^0.10.0",
@@ -78,13 +85,7 @@
     "redux-immutable": "^3.0.8",
     "redux-logger": "^2.6.1",
     "redux-saga": "^0.11.0",
-    "style-loader": "^0.13.1",
-    "webpack": "^2.1.0-beta.27",
-    "webpack-dev-server": "^2.1.0-beta.10",
+    "email-validator": "^1.0.7",
     "whatwg-fetch": "^1.0.0"
-  },
-  "dependencies": {
-    "phoenix": "file:deps/phoenix",
-    "phoenix_html": "file:deps/phoenix_html"
   }
 }

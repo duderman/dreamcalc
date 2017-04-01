@@ -5,14 +5,15 @@ import LoginForm from 'components/LoginForm'
 
 class App extends Component {
   render () {
+    const { currentEmail } = this.props
     return (
       <div className="app">
-        <LoginForm />
+        { currentEmail ? <div>{ currentEmail }</div> : <LoginForm /> }
       </div>
     )
   }
 }
 
-const mapState = state => ({ email: state.get('login').email })
+const mapState = state => ({ currentEmail: state.getIn(['login', 'email']) })
 
 export default connect(mapState)(App)

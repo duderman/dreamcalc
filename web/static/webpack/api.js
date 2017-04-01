@@ -1,22 +1,17 @@
+const ROOT_URL = 'http://localhost:4000/api'
+const url = path => `${ROOT_URL}/${path}`
+
 const Api = {
   checkEmail: function (email) {
-    let data = new FormData()
-    data.append('email', email)
-
-    fetch(`http://localhost:3001/check_email`, {
+    return fetch(url('check_email'), {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: data
+      body: JSON.stringify({ email })
     })
     .then(statusHelper)
-    .then(response => response.json())
-    .catch(error => error)
-    .then(data => {
-      return data
-    })
   }
 }
 
