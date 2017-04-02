@@ -70,7 +70,7 @@ module.exports = {
   },
   resolve: {
     modules: [
-      join('web/static/webpack'),
+      'web/static/webpack',
       'node_modules'
     ],
     extensions: ['.json', '.js', '.jsx']
