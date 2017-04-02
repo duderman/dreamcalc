@@ -1,5 +1,4 @@
-const ROOT_URL = 'http://localhost:4000/api'
-const url = path => `${ROOT_URL}/${path}`
+const url = path => `/api/${path}`
 
 const Api = {
   checkEmail: function (email) {
