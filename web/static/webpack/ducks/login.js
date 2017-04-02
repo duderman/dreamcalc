@@ -1,8 +1,9 @@
 import { takeLatest } from 'redux-saga'
 import { call, put } from 'redux-saga/effects'
 import { Map } from 'immutable'
-import Api from 'api'
 import Cookies from 'js-cookie'
+
+import Api from '../api'
 
 const cookiesEmail = Cookies.get('email') || ''
 const initialState = Map({ email: cookiesEmail, valid: true, checking: false })

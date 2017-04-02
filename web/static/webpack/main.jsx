@@ -7,9 +7,9 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-import PrivateRoute from 'components/PrivateRoute'
-import App from 'components/App'
-import Login from 'components/Login'
+import PrivateRoute from './components/PrivateRoute'
+import App from './components/App'
+import Login from './components/Login'
 
 import initStore from 'store'
 

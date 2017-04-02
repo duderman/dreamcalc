@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as EmailValidator from 'email-validator'
-import { requestLogin } from 'ducks/login'
 import { TextField, RaisedButton } from 'material-ui'
+
+import { requestLogin } from '../ducks/login'
 
 class LoginForm extends Component {
   state = {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { red500 } from 'material-ui/styles/colors'
 
-import { startGame, next } from 'ducks/game'
+import { startGame, next } from '../ducks/game'
 
 import Intro from './game/Intro'
 import Question from './game/Question'

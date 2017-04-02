@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { AppBar } from 'material-ui'
 
-import CurrentUser from 'components/CurrentUser'
+import CurrentUser from './CurrentUser'
 
-import { logout } from 'ducks/login'
-import { reset } from 'ducks/game'
+import { logout } from '../ducks/login'
+import { reset } from '../ducks/game'
 
 class Header extends Component {
   onLogout () {
