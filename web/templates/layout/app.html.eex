@@ -9,6 +9,7 @@
 
     <title>DreamCalc!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/application.css") %>">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
   </head>
 
   <body>

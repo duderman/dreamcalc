@@ -1,8 +1,21 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { Paper } from 'material-ui'
 
 import LoginForm from './LoginForm'
+
+const styles = {
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%'
+  },
+  paper: {
+    padding: 30
+  }
+}
 
 class Login extends Component {
   render () {
@@ -16,7 +29,11 @@ class Login extends Component {
     }
 
     return (
-      <LoginForm />
+      <div style={ styles.container }>
+        <Paper zDepth={ 2 } style={ styles.paper }>
+          <LoginForm />
+        </Paper>
+      </div>
     )
   }
 }

@@ -1,8 +1,8 @@
-import 'components/LoginForm.less'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as EmailValidator from 'email-validator'
 import { requestLogin } from 'ducks/login'
+import { TextField, RaisedButton } from 'material-ui'
 
 class LoginForm extends Component {
   state = {
@@ -15,8 +15,8 @@ class LoginForm extends Component {
     this.props.requestLogin(email)
   }
 
-  onEmailChange () {
-    const email = this.refs.input.value
+  onEmailChange (e) {
+    const email = e.target.value
     const invalid = !EmailValidator.validate(email)
     this.setState({ email, invalid })
   }
@@ -27,21 +27,22 @@ class LoginForm extends Component {
 
   render () {
     const { email, invalid } = this.state
+    const { checking } = this.props
     return (
       <div className="login-form">
-        <div className="login-form__label">Your email:</div>
-        <input
-          className="login-form__input"
-          name="email"
-          type="email"
+        <TextField
+          floatingLabelText="Твой имэйл"
+          errorText={ invalid ? 'инвалид' : '' }
           onChange={ this.onEmailChange.bind(this) }
-          ref="input" />
-        { invalid && <div className="login-form__error">Имэйл инвалид</div> }
-        <button className="login-form__btn"
-          onClick={ this.onButtonClick.bind(this) }
-          disabled={ invalid || !email }>
-          Send
-        </button>
+          fullWidth={ true }
+        />
+        <RaisedButton
+          label="Войти"
+          fullWidth={ true }
+          primary={ true }
+          disabled={ invalid || !email || checking }
+          onTouchTap={ this.onButtonClick.bind(this) }
+        />
       </div>
     )
   }

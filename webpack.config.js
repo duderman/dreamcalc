@@ -7,8 +7,8 @@ const IS_DEV = true // process.env.NODE_ENV === 'development'
 
 const path = require('path')
 
-function join(dest) { return path.resolve(__dirname, dest); }
-function web(dest) { return join('web/static/webpack/' + dest); }
+function join (dest) { return path.resolve(__dirname, dest) }
+function web (dest) { return join('web/static/webpack/' + dest) }
 
 const plugins = [
   new Webpack.DefinePlugin({
@@ -95,6 +95,13 @@ module.exports = {
         test: /\.less$/,
         exclude: /node_modules/,
         loader: ExtractTextPlugin.extract('css-loader?sourceMap!less-loader?sourceMap')
+      },
+      {
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000
+        }
       }
     ]
   },

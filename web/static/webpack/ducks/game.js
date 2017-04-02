@@ -6,12 +6,14 @@ function rand (min = 0, max = 10) {
 
 const OPERATIONS = ['+', '-', '*', '/']
 
+const round = (n) => Math.round(n * 100) / 100
+
 function calculate (a, b, op) {
   switch (op) {
     case '+': return a + b
     case '-': return a - b
     case '*': return a * b
-    case '/': return a / b
+    case '/': return round(a / b)
   }
 }
 
@@ -37,7 +39,8 @@ const MAX_QUESTIONS = 2
 const isEnough = state => state.get('responseTimes').size >= MAX_QUESTIONS
 const isLast = state => state.get('responseTimes').size === MAX_QUESTIONS - 1
 
-const initialState = Map({ started: false, finished: false, responseTimes: [], currentQuestion: null })
+const initialJs = { started: false, finished: false, responseTimes: [], currentQuestion: null }
+const initialState = Map(initialJs)
 
 export default function reducer (currentState = initialState, action) {
   switch (action.type) {
@@ -51,6 +54,8 @@ export default function reducer (currentState = initialState, action) {
         const last = isLast(currentState)
         return stateWithTime.set('currentQuestion', generateQuestion(last))
       }
+    case RESET:
+      return Map(initialJs)
     default:
       return currentState
   }
@@ -58,6 +63,8 @@ export default function reducer (currentState = initialState, action) {
 
 export const startGame = () => ({ type: START_GAME })
 export const next = () => ({ type: NEXT_QUESTION })
+export const reset = () => ({ type: RESET })
 
 const START_GAME = 'START_GAME'
 const NEXT_QUESTION = 'NEXT_QUESTION'
+const RESET = 'RESET'
