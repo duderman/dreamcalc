@@ -34,7 +34,7 @@ function storeResponseTime (state) {
   return state.set('responseTimes', times.push(timeDiff))
 }
 
-const MAX_QUESTIONS = 2
+const MAX_QUESTIONS = 10
 
 const isEnough = state => state.get('responseTimes').size >= MAX_QUESTIONS
 const isLast = state => state.get('responseTimes').size === MAX_QUESTIONS - 1
