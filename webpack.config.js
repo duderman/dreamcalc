@@ -3,7 +3,7 @@ const Webpack = require('webpack')
 const ImageminPlugin = require('imagemin-webpack-plugin').default
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-const IS_DEV = true // process.env.NODE_ENV === 'development'
+const IS_DEV = process.env.NODE_ENV === 'development'
 
 const path = require('path')
 

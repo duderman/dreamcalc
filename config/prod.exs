@@ -60,7 +60,7 @@ config :dreamcalc, Dreamcalc.Repo,
   adapter: Ecto.Adapters.Postgres,
   database: "dreamcalc",
   url: System.get_env("DATABASE_URL"),
-  pool_size: 10
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
 
 config :guardian, Guardian,
   secret_key: System.get_env("GUARDIAN_SECRET_KEY")
