@@ -22,7 +22,6 @@ const styles = {
     textAlign: 'center'
   },
   answerDefault: {
-    borderBottom: '2px solid'
   },
   correct: {
     color: green500,
@@ -36,15 +35,18 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'row',
-    margin: 30
+    margin: '30px 0'
   },
   button: {
     width: 50,
     height: 50,
     margin: 10
   },
+  eqButtonDiv: {
+    width: '100%'
+  },
   eqButton: {
-    width: '50%'
+    height: 70
   }
 }
 
@@ -72,32 +74,33 @@ class Question extends Component {
   }
 
   render () {
-    const { firstNumber, secondNumber, answer } = this.props
+    const { firstNumber, secondNumber, answer, operation } = this.props
 
     return (
       <div style={ styles.container }>
         <div style={ styles.text }>
           <span style={ styles.span }>{ firstNumber }</span>
           <span style={ this.calculateAnswerStyle() }>
-            { this.state.answer }
+            { operation }
           </span>
           <span style={ styles.span }>{ secondNumber }</span>
           <span style={ styles.span }>=</span>
           <span style={ styles.span }>{ answer }</span>
         </div>
         <div style={ styles.buttons }>
-          <RaisedButton onTouchTap={ this.onClick.bind(this) } label="+" style={ styles.button } />
+          <RaisedButton onTouchTap={ this.onClick.bind(this) } label="+" style={ { ...styles.button, marginLeft: 0 } } />
           <RaisedButton onTouchTap={ this.onClick.bind(this) } label="-" style={ styles.button } />
           <RaisedButton onTouchTap={ this.onClick.bind(this) } label="*" style={ styles.button } />
-          <RaisedButton onTouchTap={ this.onClick.bind(this) } label="/" style={ styles.button } />
+          <RaisedButton onTouchTap={ this.onClick.bind(this) } label="/" style={ { ...styles.button, marginRight: 0 } } />
         </div>
-        <div style={ styles.eqButton }>
+        <div style={ styles.eqButtonDiv }>
           <RaisedButton
             onTouchTap={ this.finish.bind(this) }
             label="="
             fullWidth={ true }
             disabled={ !this.state.correct }
             primary={ true }
+            style={ styles.eqButton }
           />
         </div>
       </div>
